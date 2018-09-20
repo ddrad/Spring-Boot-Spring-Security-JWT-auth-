@@ -29,7 +29,6 @@ public class ConfirmationController {
         return commonResponseFactory.create(HttpStatus.ACCEPTED.value(), HttpStatus.ACCEPTED.getReasonPhrase(), null);
     }
 
-
     @GetMapping("/verify/{userId}")
     public boolean verify(@PathVariable long userId) {
         return confirmationProcessing.verify(userId);
