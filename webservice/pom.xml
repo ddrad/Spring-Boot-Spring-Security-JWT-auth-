@@ -6,7 +6,6 @@
 
     <groupId>com.azaroff.x3</groupId>
     <artifactId>web-service</artifactId>
-    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>web-app</name>
 
@@ -63,10 +62,17 @@
         </dependency>
 
         <!-- H2 Database -->
+        <!--<dependency>-->
+            <!--<groupId>com.h2database</groupId>-->
+            <!--<artifactId>h2</artifactId>-->
+        <!--</dependency>-->
+        <!-- PostgresSQL Database -->
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.5</version>
         </dependency>
+
     </dependencies>
 
     <build>

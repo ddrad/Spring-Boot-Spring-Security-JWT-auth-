@@ -2,11 +2,12 @@ package com.azaroff.x3.notification.dao.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "confirmation")
-public class Confirmation {
+public class Confirmation implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

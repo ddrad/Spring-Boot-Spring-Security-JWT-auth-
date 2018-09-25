@@ -61,10 +61,10 @@ public class ConfirmationProcessing {
         }
     }
 
-    public void confirm(String correlationId) {
+    public Confirmation confirm(String correlationId) {
         Confirmation confirmation = confirmationRepository.findByCorrelationId(correlationId);
         confirmation.setConfirm(true);
-        confirmationRepository.save(confirmation);
+        return confirmationRepository.save(confirmation);
     }
 
     public boolean verify(long userId) {

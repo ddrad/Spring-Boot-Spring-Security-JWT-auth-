@@ -13,7 +13,7 @@ import org.springframework.util.Assert;
 /**
  * Copyright DonRiver Inc. All Rights Reserved.
  * <p>
- * Author: Yevgeny Barkovsky
+ * Author: Dmitry Azarov
  * Created: 10.07.2018
  */
 @Configuration
