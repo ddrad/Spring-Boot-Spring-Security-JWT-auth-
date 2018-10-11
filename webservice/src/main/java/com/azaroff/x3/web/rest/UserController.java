@@ -5,9 +5,12 @@ import com.azaroff.x3.user.service.UserService;
 import com.azaroff.x3.web.model.CommonResponse;
 import com.azaroff.x3.web.util.CommonResponseFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -35,5 +38,11 @@ public class UserController {
     @GetMapping("/all")
     public List<User> getAllCustomers() {
         return userService.getAllCustomers();
+    }
+
+    @GetMapping()
+    public User getCustomer(Authentication authentication) {
+        String email = (String)authentication.getPrincipal();
+        return userService.findUserByEmail(email);
     }
 }

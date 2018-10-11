@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User createCustomer(User customer) {
          User createdUser = userRepository.save(customer);
-         confirm(customer);
+//         confirm(customer);
          return createdUser;
     }
 

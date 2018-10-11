@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository("userRepository")
 public interface AuthenticationDataRepository extends JpaRepository<AuthenticationData, Long> {
-    AuthenticationData findByUsername(String username);
+    AuthenticationData findByEmail(String email);
 }
