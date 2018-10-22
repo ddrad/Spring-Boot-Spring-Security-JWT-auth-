@@ -1,5 +1,13 @@
 ﻿<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" formControlName="email" class="form-control" readonly="true"
+           [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+      <div *ngIf="f.email.errors.required">Email Number is required</div>
+    </div>
+  </div>
+  <div class="form-group">
     <label for="firstName">First Name</label>
     <input type="text" formControlName="firstName" class="form-control"
            [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"/>

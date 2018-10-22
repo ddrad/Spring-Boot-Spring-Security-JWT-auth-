@@ -6,9 +6,21 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthenticationService {
+
+    email:string;
+
     constructor(private http: HttpClient) { }
 
+    setEmail(email: string) {
+      this.email = email;
+    }
+
+    getEmail() : string {
+      return this.email;
+    }
+
     login(username: string, password: string) {
+        this.setEmail(username);
         return this.http.post<Response>(`${environment.apiUrl}/login`, { username: username, password: password },
           {observe: 'response'})
             .pipe(map(resp => {

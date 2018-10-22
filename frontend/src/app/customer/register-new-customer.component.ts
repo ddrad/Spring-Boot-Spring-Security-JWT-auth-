@@ -1,9 +1,10 @@
-﻿import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+﻿import {Component, Input, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {first} from 'rxjs/operators';
 
-import {AlertService, UserService} from '../_services/index';
+import {AlertService, AuthenticationService, UserService} from '../_services/index';
+import {Subscribable, Subscription} from "rxjs";
 
 @Component({
   selector: 'createCustomer',
@@ -14,19 +15,23 @@ export class RegisterNewCustomerComponent implements OnInit {
   loading = false;
   submitted = false;
 
+   email: string;
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private authService: AuthenticationService,
     private userService: UserService,
     private alertService: AlertService) {
   }
 
   ngOnInit() {
+    this.email = this.authService.getEmail();
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       username: [''],
-      // email: ['', Validators.required],
+      email: [this.email, Validators.required],
       phoneNumber: ['', Validators.required],
       // password: ['', [Validators.required, Validators.minLength(6)]]
     });
