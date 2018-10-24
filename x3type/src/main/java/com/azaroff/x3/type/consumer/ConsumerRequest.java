@@ -1,4 +1,4 @@
-package com.azaroff.x3.integration.rest.model;
+package com.azaroff.x3.type.consumer;
 
 public class ConsumerRequest {
 

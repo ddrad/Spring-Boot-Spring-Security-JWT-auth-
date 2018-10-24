@@ -19,6 +19,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <x3.type.version>1.0</x3.type.version>
     </properties>
 
     <dependencies>
@@ -69,6 +70,12 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.2.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.azaroff.x3</groupId>
+            <artifactId>x3-type</artifactId>
+            <version>${x3.type.version}</version>
         </dependency>
 
     </dependencies>

@@ -1,6 +1,6 @@
 package org.camunda.bpm.getstarted.loanapproval.config;
 
-import org.camunda.bpm.getstarted.loanapproval.model.ConsumerRequest;
+import com.azaroff.x3.type.consumer.ConsumerRequest;
 import org.camunda.bpm.getstarted.loanapproval.process.BusinessAccountProcessing;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

@@ -1,6 +1,6 @@
 package org.camunda.bpm.getstarted.loanapproval.flow;
 
-import org.camunda.bpm.getstarted.loanapproval.model.ConsumerRequest;
+import com.azaroff.x3.type.consumer.ConsumerRequest;
 import org.springframework.integration.IntegrationMessageHeaderAccessor;
 import org.springframework.integration.annotation.Gateway;
 import org.springframework.integration.annotation.MessagingGateway;

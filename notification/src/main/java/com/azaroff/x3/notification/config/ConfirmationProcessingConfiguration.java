@@ -1,7 +1,7 @@
 package com.azaroff.x3.notification.config;
 
-import com.azaroff.x3.notification.model.ConsumerRequest;
-import com.azaroff.x3.notification.processing.confirmation.ConfirmationProcessing;
+import com.azaroff.x3.type.consumer.ConsumerRequest;
+import com.azaroff.x3.notification.service.confirmation.ConfirmationProcessing;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

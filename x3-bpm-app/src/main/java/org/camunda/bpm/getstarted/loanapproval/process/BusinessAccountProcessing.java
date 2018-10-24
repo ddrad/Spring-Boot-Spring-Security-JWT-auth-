@@ -1,7 +1,7 @@
 package org.camunda.bpm.getstarted.loanapproval.process;
 
 import org.camunda.bpm.engine.RuntimeService;
-import org.camunda.bpm.getstarted.loanapproval.model.ConsumerRequest;
+import com.azaroff.x3.type.consumer.ConsumerRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.azaroff.x3.integration.rest;
 
-import com.azaroff.x3.integration.rest.model.ConsumerRequest;
+import com.azaroff.x3.type.consumer.ConsumerRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

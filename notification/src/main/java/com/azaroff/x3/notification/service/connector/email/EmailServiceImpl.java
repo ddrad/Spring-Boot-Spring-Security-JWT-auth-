@@ -1,4 +1,4 @@
-package com.azaroff.x3.notification.connector.email;
+package com.azaroff.x3.notification.service.connector.email;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;

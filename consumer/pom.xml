@@ -18,7 +18,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-
+<x3.type.version>1.0</x3.type.version>
     </properties>
 
     <dependencies>
@@ -46,6 +46,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.azaroff.x3</groupId>
+            <artifactId>x3-type</artifactId>
+            <version>${x3.type.version}</version>
         </dependency>
     </dependencies>
 

@@ -1,10 +1,10 @@
-package com.azaroff.x3.notification.processing.confirmation;
+package com.azaroff.x3.notification.service.confirmation;
 
-import com.azaroff.x3.notification.connector.email.EmailService;
+import com.azaroff.x3.notification.service.connector.email.EmailService;
 import com.azaroff.x3.notification.dao.entity.Confirmation;
 import com.azaroff.x3.notification.dao.repository.ConfirmationRepository;
-import com.azaroff.x3.notification.model.ConsumerRequest;
-import com.azaroff.x3.notification.model.ConsumerTarget;
+import com.azaroff.x3.type.consumer.ConsumerRequest;
+import com.azaroff.x3.type.consumer.ConsumerTarget;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
-
 
 @Component
 public class ConfirmationProcessing {

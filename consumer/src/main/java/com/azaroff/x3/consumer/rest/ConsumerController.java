@@ -1,7 +1,7 @@
 package com.azaroff.x3.consumer.rest;
 
 import com.azaroff.x3.consumer.flow.OrderGateway;
-import com.azaroff.x3.consumer.model.ConsumerRequest;
+import com.azaroff.x3.type.consumer.ConsumerRequest;
 import com.google.common.net.HttpHeaders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

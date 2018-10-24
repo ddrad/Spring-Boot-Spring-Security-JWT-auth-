@@ -2,10 +2,10 @@ package com.azaroff.x3.user.service;
 
 import com.azaroff.x3.exception.NotFoundException;
 import com.azaroff.x3.integration.rest.RestSender;
-import com.azaroff.x3.integration.rest.model.ConsumerTarget;
+import com.azaroff.x3.type.consumer.ConsumerTarget;
 import com.azaroff.x3.user.dao.entity.User;
 import com.azaroff.x3.user.dao.repository.UserRepository;
-import com.azaroff.x3.integration.rest.model.ConsumerRequest;
+import com.azaroff.x3.type.consumer.ConsumerRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User createCustomer(User customer) {
          User createdUser = userRepository.save(customer);
-//         confirm(customer);
+         confirm(customer);
          return createdUser;
     }
 

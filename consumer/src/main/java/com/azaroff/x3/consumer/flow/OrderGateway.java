@@ -1,6 +1,6 @@
 package com.azaroff.x3.consumer.flow;
 
-import com.azaroff.x3.consumer.model.ConsumerRequest;
+import com.azaroff.x3.type.consumer.ConsumerRequest;
 import org.springframework.integration.IntegrationMessageHeaderAccessor;
 import org.springframework.integration.annotation.Gateway;
 import org.springframework.integration.annotation.MessagingGateway;

@@ -1,4 +1,4 @@
-package com.azaroff.x3.notification.connector.email;
+package com.azaroff.x3.notification.service.connector.email;
 
 public interface EmailService {
 

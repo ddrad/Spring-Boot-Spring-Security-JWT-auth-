@@ -1,7 +1,7 @@
 package com.azaroff.x3.consumer.flow;
 
-import com.azaroff.x3.consumer.model.ConsumerRequest;
-import com.azaroff.x3.consumer.model.ConsumerType;
+import com.azaroff.x3.type.consumer.ConsumerRequest;
+import com.azaroff.x3.type.consumer.ConsumerType;
 
 public class ConsumerTypeResolver {
 
@@ -10,7 +10,7 @@ public class ConsumerTypeResolver {
     }
 
 //    private static Boolean isTypeExpected(String type) {
-//        return type.equalsIgnoreCase(ConsumerType.email.name()) || type.equalsIgnoreCase(ConsumerType.sms.name())
+//        return type.equalsIgnoreCase(ConsumerType.notifyByEmail.name()) || type.equalsIgnoreCase(ConsumerType.notifyBySms.name())
 //                || type.equalsIgnoreCase(ConsumerType.other.name());
 //    }
 

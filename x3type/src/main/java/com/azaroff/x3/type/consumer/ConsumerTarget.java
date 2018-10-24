@@ -1,4 +1,4 @@
-package com.azaroff.x3.notification.model;
+package com.azaroff.x3.type.consumer;
 
 public enum ConsumerTarget {
 

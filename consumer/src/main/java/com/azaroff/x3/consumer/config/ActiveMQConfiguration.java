@@ -1,8 +1,8 @@
 package com.azaroff.x3.consumer.config;
 
 import com.azaroff.x3.consumer.flow.ConsumerTypeResolver;
-import com.azaroff.x3.consumer.model.ConsumerRequest;
-import com.azaroff.x3.consumer.model.ConsumerType;
+import com.azaroff.x3.type.consumer.ConsumerRequest;
+import com.azaroff.x3.type.consumer.ConsumerType;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.slf4j.Logger;
@@ -30,6 +30,8 @@ public class ActiveMQConfiguration {
     private String email_queue;
     @Value("${jms.queue.confirmation.sms}")
     private String sms_queue;
+    @Value("${jms.queue.businessAccount}")
+    private String businessAccountQueueName;
 
     @Bean
     public Queue emailQueue() {
@@ -39,6 +41,11 @@ public class ActiveMQConfiguration {
     @Bean
     public Queue smsQueue() {
         return new ActiveMQQueue(sms_queue);
+    }
+
+    @Bean
+    public Queue businessAccountQueue() {
+        return new ActiveMQQueue(businessAccountQueueName);
     }
 
     @Bean
@@ -55,12 +62,14 @@ public class ActiveMQConfiguration {
     public IntegrationFlow orders() {
         return IntegrationFlows.from(orderChannel()).log().<ConsumerRequest, ConsumerType>route(ConsumerTypeResolver::resolveType,
                 mapping -> mapping
-                        .subFlowMapping(ConsumerType.email,
+                        .subFlowMapping(ConsumerType.notifyByEmail,
                                 sf -> sf.transform(Transformers.toJson()).handle(Jms.outboundAdapter(connectionFactory()).destination(emailQueue())))
-                        .subFlowMapping(ConsumerType.sms,
+                        .subFlowMapping(ConsumerType.notifyBySms,
                                 sf -> sf.transform(Transformers.toJson()).handle(Jms.outboundAdapter(connectionFactory()).destination(smsQueue())))
                         .subFlowMapping(ConsumerType.other,
                                 sf -> sf.transform(Transformers.toJson()).handle(Jms.outboundAdapter(connectionFactory()).destination(smsQueue())))
+                        .subFlowMapping(ConsumerType.createBusinessAccount,
+                                sf -> sf.transform(Transformers.toJson()).handle(Jms.outboundAdapter(connectionFactory()).destination(businessAccountQueue())))
                         .defaultSubFlowMapping(
                                 sf -> sf.handle(m -> {
                             logger.warn("Wrong message type " + ConsumerTypeResolver.resolveType((ConsumerRequest) m.getPayload()) +
