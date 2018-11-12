@@ -1,7 +1,7 @@
-package com.azaroff.x3.notification.dao.repository;
+package com.azaroff.x3.confirmation.dao.repository;
 
 
-import com.azaroff.x3.notification.dao.entity.Confirmation;
+import com.azaroff.x3.confirmation.dao.entity.Confirmation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

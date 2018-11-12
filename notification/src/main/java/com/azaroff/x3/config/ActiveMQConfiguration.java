@@ -1,4 +1,4 @@
-package com.azaroff.x3.notification.config;
+package com.azaroff.x3.config;
 
 import com.azaroff.x3.type.consumer.ConsumerRequest;
 import org.apache.activemq.ActiveMQConnectionFactory;

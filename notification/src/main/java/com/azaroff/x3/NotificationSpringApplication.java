@@ -1,4 +1,4 @@
-package com.azaroff.x3.notification;
+package com.azaroff.x3;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

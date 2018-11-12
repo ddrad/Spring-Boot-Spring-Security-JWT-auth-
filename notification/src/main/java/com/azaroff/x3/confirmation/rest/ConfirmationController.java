@@ -1,9 +1,7 @@
-package com.azaroff.x3.notification.rest;
+package com.azaroff.x3.confirmation.rest;
 
-import com.azaroff.x3.notification.dao.entity.Confirmation;
-import com.azaroff.x3.notification.service.confirmation.ConfirmService;
-import com.azaroff.x3.type.consumer.ConsumerRequest;
-import com.azaroff.x3.type.consumer.ConsumerType;
+import com.azaroff.x3.confirmation.dao.entity.Confirmation;
+import com.azaroff.x3.confirmation.service.ConfirmService;
 import com.azaroff.x3.notification.model.CommonResponse;
 import com.azaroff.x3.notification.util.CommonResponseFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +26,9 @@ public class ConfirmationController {
             return commonResponseFactory.create(HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), "Correlation ID must not be null");
         }
         Confirmation confirmation = confirmService.confirm(correlationId);
-//        if(confirmService.isCustomerType(confirmation.getId())) {
-//            sendToBusinessAccountProcess(correlationId, confirmation);
-//        }
+        //TODO: call bpm process
+        confirmService.sendToBusinessAccountProcess(correlationId, confirmation);
+
         CommonResponseFactory<CommonResponse> commonResponseFactory = CommonResponse::new;
         return commonResponseFactory.create(HttpStatus.ACCEPTED.value(), HttpStatus.ACCEPTED.getReasonPhrase(), null);
     }
@@ -38,12 +36,5 @@ public class ConfirmationController {
     @GetMapping("/verify/{userId}")
     public boolean verify(@PathVariable long userId) {
         return confirmService.verify(userId);
-    }
-
-    private void sendToBusinessAccountProcess(String correlationId, Confirmation data) {
-        ConsumerRequest request = new ConsumerRequest();
-        request.setMessage(data);
-        request.setType(ConsumerType.createBusinessAccount);
-        confirmService.sendToConsumer(request, correlationId);
     }
 }

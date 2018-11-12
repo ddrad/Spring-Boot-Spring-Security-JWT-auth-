@@ -1,27 +1,29 @@
-package com.azaroff.x3.notification.service.confirmation;
+package com.azaroff.x3.notification.service;
 
-import com.azaroff.x3.notification.service.connector.email.EmailService;
-import com.azaroff.x3.notification.dao.entity.Confirmation;
-import com.azaroff.x3.notification.dao.repository.ConfirmationRepository;
+import com.azaroff.x3.confirmation.service.ConfirmService;
+import com.azaroff.x3.connector.email.EmailService;
+import com.azaroff.x3.confirmation.dao.entity.Confirmation;
 import com.azaroff.x3.type.consumer.ConsumerRequest;
 import com.azaroff.x3.type.consumer.ConsumerTarget;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
 
 @Component
-public class ConfirmationProcessing {
-    private final Logger logger = LoggerFactory.getLogger(ConfirmationProcessing.class);
+public class NotificationProcessing {
+    private final Logger logger = LoggerFactory.getLogger(NotificationProcessing.class);
+    private final ConfirmService confirmService;
+    private final EmailService emailService;
+
     @Autowired
-    @Qualifier("confirmationRepository")
-    private ConfirmationRepository confirmationRepository;
-    @Autowired
-    private EmailService emailService;
+    public NotificationProcessing(ConfirmService confirmService, EmailService emailService) {
+        this.confirmService = confirmService;
+        this.emailService = emailService;
+    }
 
     public void process(ConsumerRequest consumerRequest, String correlationId) {
         LinkedHashMap message = (LinkedHashMap)consumerRequest.getMessage();
@@ -31,7 +33,7 @@ public class ConfirmationProcessing {
             long userId = (Integer) message.get("id");
             String email  = (String) message.get("email");
             Confirmation confirmation = buildVerification(userId, correlationId);
-            confirmationRepository.save(confirmation);
+            confirmService.create(confirmation);
             sb.append(message.get("firstName")).append(" ")
                     .append(message.get("lastName")).append(".\n")
                     .append("Congratulations on your decision to join our app!").append("\n")
@@ -48,7 +50,7 @@ public class ConfirmationProcessing {
             LinkedHashMap user = (LinkedHashMap) message.get("user");
             String email = (String) user.get("email");
             Confirmation confirmation = buildVerification(bankAccountId, correlationId);
-            confirmationRepository.save(confirmation);
+            confirmService.create(confirmation);
             sb.append(user.get("firstName")).append(" ")
                     .append(user.get("lastName")).append(".\n")
                     .append("We are really happy you decided create yourself Business Account").append("\n")
@@ -60,15 +62,9 @@ public class ConfirmationProcessing {
         }
     }
 
-    public Confirmation confirm(String correlationId) {
-        Confirmation confirmation = confirmationRepository.findByCorrelationId(correlationId);
-        confirmation.setConfirm(true);
-        return confirmationRepository.save(confirmation);
-    }
-
     public boolean verify(long userId) {
-        Confirmation confirmation = confirmationRepository.findByUserId(userId);
-        return confirmation == null ? false : confirmation.isConfirm();
+        Confirmation confirmation = confirmService.findByUserId(userId);
+        return confirmation != null && confirmation.isConfirm();
     }
 
     private Confirmation buildVerification(long userId, String correlationId) {

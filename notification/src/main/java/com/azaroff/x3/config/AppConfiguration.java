@@ -1,9 +1,12 @@
-package com.azaroff.x3.notification.config;
+package com.azaroff.x3.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = "com.azaroff.x3.notification")
+@ComponentScan(
+        {"com.azaroff.x3.notification",
+        "com.azaroff.x3.confirmation",
+        "com.azaroff.x3.connector"})
 public class AppConfiguration {
 }

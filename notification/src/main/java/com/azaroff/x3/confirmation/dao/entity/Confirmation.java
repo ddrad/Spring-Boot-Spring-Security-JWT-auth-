@@ -1,4 +1,4 @@
-package com.azaroff.x3.notification.dao.entity;
+package com.azaroff.x3.confirmation.dao.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
