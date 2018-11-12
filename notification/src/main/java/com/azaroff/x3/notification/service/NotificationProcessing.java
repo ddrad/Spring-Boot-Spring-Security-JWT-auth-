@@ -62,11 +62,6 @@ public class NotificationProcessing {
         }
     }
 
-    public boolean verify(long userId) {
-        Confirmation confirmation = confirmService.findByUserId(userId);
-        return confirmation != null && confirmation.isConfirm();
-    }
-
     private Confirmation buildVerification(long userId, String correlationId) {
         Confirmation confirmation = new Confirmation();
         confirmation.setCorrelationId(correlationId);
