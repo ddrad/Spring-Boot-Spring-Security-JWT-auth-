@@ -14,6 +14,8 @@ import java.util.Collections;
 public class RestSender {
     @Value("${gateway.consumer.url}")
     private String consumerUrl;
+    @Value("${gateway.user.url}")
+    private String userServiceUrl;
 
     private static final Logger logger = LoggerFactory.getLogger(RestSender.class);
 
@@ -30,4 +32,11 @@ public class RestSender {
         ResponseEntity<String> responseEntity = restTemplate.exchange(consumerUrl, HttpMethod.POST, entity, String.class);
         logger.info("Reply was received " + responseEntity);
         logger.info("Replay was sent to Consumer");
-    }}
+    }
+
+    public String findUserType(long id) {
+        RestTemplate restTemplate = new RestTemplate();
+        HttpEntity<String> entity = restTemplate.getForEntity(userServiceUrl + "/" + id, String.class);
+        return entity.getBody();
+    }
+}
