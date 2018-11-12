@@ -8,16 +8,16 @@ import java.util.UUID;
 
 public interface BaseUserService {
 
-    default void confirm(Object message) {
+    default void sendNotification(Object message) {
         ConsumerRequest consumerRequest = new ConsumerRequest();
         consumerRequest.setType(ConsumerType.notifyByEmail);
         consumerRequest.setTarget(getConsumerTarget());
         consumerRequest.setMessage(message);
         String correlationId = UUID.randomUUID().toString();
-        sendToConfirm(consumerRequest, correlationId);
+        sendNotification(consumerRequest, correlationId);
     }
 
-    void sendToConfirm(ConsumerRequest consumerRequest, String correlationId);
+    void sendNotification(ConsumerRequest consumerRequest, String correlationId);
 
     ConsumerTarget getConsumerTarget();
 }

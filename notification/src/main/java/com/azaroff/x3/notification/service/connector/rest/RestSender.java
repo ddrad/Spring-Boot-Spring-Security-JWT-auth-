@@ -34,9 +34,9 @@ public class RestSender {
         logger.info("Replay was sent to Consumer");
     }
 
-    public String findUserType(long id) {
-        RestTemplate restTemplate = new RestTemplate();
-        HttpEntity<String> entity = restTemplate.getForEntity(userServiceUrl + "/" + id, String.class);
-        return entity.getBody();
-    }
+//    public String findUserType(long id) {
+//        RestTemplate restTemplate = new RestTemplate();
+//        HttpEntity<String> entity = restTemplate.getForEntity(userServiceUrl + "/" + id, String.class);
+//        return entity.getBody();
+//    }
 }

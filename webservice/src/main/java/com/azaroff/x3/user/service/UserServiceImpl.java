@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User createCustomer(User customer) {
          User createdUser = userRepository.save(customer);
-         confirm(customer);
+         sendNotification(customer);
          return createdUser;
     }
 
@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void sendToConfirm(ConsumerRequest consumerRequest, String correlationId) {
+    public void sendNotification(ConsumerRequest consumerRequest, String correlationId) {
         restSender.toConsumer(consumerRequest, correlationId);
     }
 

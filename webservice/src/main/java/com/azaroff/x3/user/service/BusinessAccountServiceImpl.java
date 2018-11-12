@@ -30,12 +30,12 @@ public class BusinessAccountServiceImpl implements BusinessAccountService {
         User customer = userService.getUserById(customerId);
         isConfirm(customerId);
         businessAccount.setUser(customer);
-        confirm(businessAccount);
+        sendNotification(businessAccount);
         return businessAccountRepository.save(businessAccount);
     }
 
     @Override
-    public void sendToConfirm(ConsumerRequest consumerRequest, String correlationId) {
+    public void sendNotification(ConsumerRequest consumerRequest, String correlationId) {
         restSender.toConsumer(consumerRequest, correlationId);
     }
 

@@ -9,6 +9,6 @@ import org.springframework.messaging.handler.annotation.Header;
 
 @MessagingGateway
 public interface NotifyProcessingGateway {
-    @Gateway(requestChannel = "orderNotifyChannel")
+    @Gateway(requestChannel = "notifyChannel")
     void processOrderNotify(ConsumerRequest request, @Header(IntegrationMessageHeaderAccessor.CORRELATION_ID) String correlationId);
 }

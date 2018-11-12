@@ -24,16 +24,14 @@ import org.springframework.messaging.MessageChannel;
 @Configuration
 public class ActiveMQConfiguration {
     private final Logger logger = LoggerFactory.getLogger(ActiveMQConfiguration.class);
-    @Value("${notify.queue.name}")
+    @Value("${notification.queue.name}")
     private String queueName;
-    @Value("${notify.polling.interval.ms}")
+    @Value("${notification.polling.interval.ms}")
     private long queuePollingIntervalMs;
-    @Value("${notify.polling.initial.delay.ms}")
+    @Value("${notification.polling.initial.delay.ms}")
     private long queuePollingInitialDelayMs;
-    @Value("${notify.polling.max.messages.per.pool}")
+    @Value("${notification.polling.max.messages.per.pool}")
     private long maxMessagesPerPoll;
-//    @Value("${business.queue.name}")
-//    private String businessAccountQueueName;
 
     @Bean
     public ConnectionFactory connectionFactory() {
@@ -59,6 +57,6 @@ public class ActiveMQConfiguration {
                         .errorHandler(e -> logger.info("Can't handle incoming message", e))
                         .maxMessagesPerPoll(maxMessagesPerPoll))).wireTap(h -> h.log().channel("nullChannel"))
                 .transform(Transformers.fromJson(ConsumerRequest.class))
-                .channel("orderNotifyChannel").get();
+                .channel("notifyChannel").get();
     }
 }

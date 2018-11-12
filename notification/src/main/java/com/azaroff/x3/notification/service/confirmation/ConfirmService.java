@@ -27,8 +27,8 @@ public class ConfirmService {
         restSender.toConsumer(request, correlationId);
     }
 
-    public boolean isCustomerType(long userId) {
-        String userType = restSender.findUserType(userId);
-        return false;
-    }
+//    public boolean isCustomerType(long userId) {
+//        String userType = restSender.findUserType(userId);
+//        return false;
+//    }
 }

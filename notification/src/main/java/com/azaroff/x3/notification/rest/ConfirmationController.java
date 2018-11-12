@@ -28,9 +28,9 @@ public class ConfirmationController {
             return commonResponseFactory.create(HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(), "Correlation ID must not be null");
         }
         Confirmation confirmation = confirmService.confirm(correlationId);
-        if(confirmService.isCustomerType(confirmation.getId())) {
-            sendToBusinessAccountProcess(correlationId, confirmation);
-        }
+//        if(confirmService.isCustomerType(confirmation.getId())) {
+//            sendToBusinessAccountProcess(correlationId, confirmation);
+//        }
         CommonResponseFactory<CommonResponse> commonResponseFactory = CommonResponse::new;
         return commonResponseFactory.create(HttpStatus.ACCEPTED.value(), HttpStatus.ACCEPTED.getReasonPhrase(), null);
     }

@@ -26,9 +26,9 @@ import javax.jms.Queue;
 public class ActiveMQConfiguration {
     private final Logger logger = LoggerFactory.getLogger(ActiveMQConfiguration.class);
 
-    @Value("${jms.queue.confirmation.email}")
+    @Value("${jms.queue.notification.email}")
     private String email_queue;
-    @Value("${jms.queue.confirmation.sms}")
+    @Value("${jms.queue.notification.sms}")
     private String sms_queue;
     @Value("${jms.queue.businessAccount}")
     private String businessAccountQueueName;
@@ -72,9 +72,9 @@ public class ActiveMQConfiguration {
                                 sf -> sf.transform(Transformers.toJson()).handle(Jms.outboundAdapter(connectionFactory()).destination(businessAccountQueue())))
                         .defaultSubFlowMapping(
                                 sf -> sf.handle(m -> {
-                            logger.warn("Wrong message type " + ConsumerTypeResolver.resolveType((ConsumerRequest) m.getPayload()) +
-                                    " for message with correlationId = " + m.getHeaders().get(IntegrationMessageHeaderAccessor.CORRELATION_ID));
-                        }))
+                                    logger.warn("Wrong message type " + ConsumerTypeResolver.resolveType((ConsumerRequest) m.getPayload()) +
+                                            " for message with correlationId = " + m.getHeaders().get(IntegrationMessageHeaderAccessor.CORRELATION_ID));
+                                }))
                         .resolutionRequired(false)).get();
     }
 }

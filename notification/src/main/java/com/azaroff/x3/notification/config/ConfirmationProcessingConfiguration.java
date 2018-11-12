@@ -27,7 +27,7 @@ public class ConfirmationProcessingConfiguration {
 
     @Bean
     public IntegrationFlow processNotify() {
-        return IntegrationFlows.from("orderNotifyChannel").handle(m -> {
+        return IntegrationFlows.from("notifyChannel").handle(m -> {
             Assert.isInstanceOf(ConsumerRequest.class, m.getPayload());
             confirmationProcessing.process((ConsumerRequest) m.getPayload(), (String) m.getHeaders().get(IntegrationMessageHeaderAccessor.CORRELATION_ID));
         }).get();
