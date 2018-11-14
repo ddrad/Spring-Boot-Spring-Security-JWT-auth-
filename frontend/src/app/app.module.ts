@@ -16,14 +16,20 @@ import { AlertService, AuthenticationService, UserService } from './_services';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
-import { RegisterNewCustomerComponent } from "./customer";
+import { RegisterNewCustomerComponent } from "./customer";;
+import { ProfileComponent } from './profile/profile.component';
+import { HeaderComponent } from './header/header.component';
+import { BusinessComponent } from './business/business.component';
+import { BusinessListComponent } from './business/business-list/business-list.component';
+import {BusinessModule} from "./business/business.module";
 
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        routing
+        routing,
+        BusinessModule,
     ],
     declarations: [
         AppComponent,
@@ -31,7 +37,9 @@ import { RegisterNewCustomerComponent } from "./customer";
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        RegisterNewCustomerComponent
+        RegisterNewCustomerComponent,
+        ProfileComponent ,
+        HeaderComponent
     ],
     providers: [
         AuthGuard,

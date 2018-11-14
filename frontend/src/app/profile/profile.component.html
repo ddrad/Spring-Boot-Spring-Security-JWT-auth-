@@ -1,0 +1,27 @@
+<div *ngIf="currentUser; else loadingPanel">
+  <h1>Hi {{currentUser.firstName}}!</h1>
+  <p>You're logged in with Angular 6!!</p>
+  <h3>All registered users:</h3>
+  <ul>
+    <li>
+      Email: {{currentUser.email}}
+    </li>
+    <li>
+      First Name: {{currentUser.firstName}}
+    </li>
+    <li>
+      Last Name: {{currentUser.lastName}}
+    </li>
+    <li>
+      ID: {{currentUser.phoneNumber}}
+    </li>
+    <li>
+      ID: {{currentUser.id}}
+    </li>
+  </ul>
+  <p><a [routerLink]="['/login']">Logout</a></p>
+</div>
+<ng-template #loadingPanel>
+  Loading...
+</ng-template>
+

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BusinessServiceImpl implements BusinessService {
 
@@ -21,6 +23,11 @@ public class BusinessServiceImpl implements BusinessService {
     @Override
     public Business updateStatus(Business business) {
         return businessRepository.save(business);
+    }
+
+    @Override
+    public List<Business> getAll() {
+        return businessRepository.findAll();
     }
 
 

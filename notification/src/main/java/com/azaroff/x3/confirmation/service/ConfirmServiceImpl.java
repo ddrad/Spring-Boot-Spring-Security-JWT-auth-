@@ -51,5 +51,4 @@ public class ConfirmServiceImpl implements ConfirmService {
         request.setType(ConsumerType.createBusinessAccount);
         restSender.toConsumer(request, correlationId);
     }
-
 }
