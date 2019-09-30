@@ -61,16 +61,16 @@
         </dependency>
 
         <!-- H2 Database -->
-        <!--<dependency>-->
-            <!--<groupId>com.h2database</groupId>-->
-            <!--<artifactId>h2</artifactId>-->
-        <!--</dependency>-->
-        <!-- PostgresSQL Database -->
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.2.5</version>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
         </dependency>
+        <!-- PostgresSQL Database -->
+        <!--<dependency>-->
+            <!--<groupId>org.postgresql</groupId>-->
+            <!--<artifactId>postgresql</artifactId>-->
+            <!--<version>42.2.5</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>com.azaroff.x3</groupId>

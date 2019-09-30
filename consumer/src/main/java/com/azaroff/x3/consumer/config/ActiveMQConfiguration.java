@@ -60,6 +60,7 @@ public class ActiveMQConfiguration {
 
     @Bean
     public IntegrationFlow orders() {
+
         return IntegrationFlows.from(orderChannel()).log().<ConsumerRequest, ConsumerType>route(ConsumerTypeResolver::resolveType,
                 mapping -> mapping
                         .subFlowMapping(ConsumerType.notifyByEmail,

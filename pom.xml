@@ -5,8 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.azaroff.x3</groupId>
-    <artifactId>x3-util</artifactId>
-    <version>1.0</version>
+    <artifactId>build-app</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>BuildApp</name>
+    <packaging>pom</packaging>
 
-
+    <modules>
+        <module>x3-type</module>
+        <module>web-service</module>
+        <module>consumer</module>
+        <module>notification</module>
+    </modules>
 </project>
