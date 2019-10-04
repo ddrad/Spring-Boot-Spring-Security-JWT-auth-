@@ -2,8 +2,9 @@
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
+  <a routerLink="/profile" routerLinkActive="active-link" *ngIf="authGuard.canActivate(null,null)">My Account</a>
+  <a routerLink="#" routerLinkActive="active-link" *ngIf="!authGuard.canActivate(null,null)">About</a>
+  <a routerLink="#" routerLinkActive="active-link">Services</a>
+  <a routerLink="#" routerLinkActive="active-link">Clients</a>
+  <a routerLink="#" routerLinkActive="active-link">Contact</a>
 </div>

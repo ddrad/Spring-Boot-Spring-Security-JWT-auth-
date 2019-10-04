@@ -36,6 +36,9 @@ public class ConfirmServiceImpl implements ConfirmService {
 
     public Confirmation confirm(String correlationId) {
         Confirmation confirmation = findByCorrelationId(correlationId);
+        if(confirmation == null){
+            throw new RuntimeException("Cannot find info by correlationId " + correlationId);
+        }
         confirmation.setConfirm(true);
         return confirmationRepository.save(confirmation);
     }

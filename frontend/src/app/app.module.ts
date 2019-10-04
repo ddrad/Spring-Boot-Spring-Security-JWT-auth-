@@ -22,6 +22,9 @@ import { HeaderComponent } from './header/header.component';
 import { BusinessComponent } from './business/business.component';
 import { BusinessListComponent } from './business/business-list/business-list.component';
 import {BusinessModule} from "./business/business.module";
+import {UserResolver} from "./_resolver/user-resolver";
+
+;
 
 @NgModule({
     imports: [
@@ -39,13 +42,13 @@ import {BusinessModule} from "./business/business.module";
         RegisterComponent,
         RegisterNewCustomerComponent,
         ProfileComponent ,
-        HeaderComponent
-    ],
+        HeaderComponent],
     providers: [
         AuthGuard,
         AlertService,
         AuthenticationService,
         UserService,
+        UserResolver,
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 

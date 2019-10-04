@@ -5,17 +5,21 @@ import {BusinessListComponent} from "./business-list/business-list.component";
 import {BusinessComponent} from "./business.component";
 import {CommonModule} from "@angular/common";
 import {BusinessService} from "../_services";
+import { RegisterNewBusinessComponent } from './register-new-business/register-new-business.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [
     BusinessComponent,
     BusinessItemComponent,
-    BusinessListComponent
+    BusinessListComponent,
+    RegisterNewBusinessComponent
   ],
   imports: [
     RouterModule,
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   providers: [
     BusinessService

@@ -4,8 +4,11 @@ import com.azaroff.x3.business.dao.entity.Business;
 import com.azaroff.x3.business.service.BusinessService;
 import com.azaroff.x3.web.model.CommonResponse;
 import com.azaroff.x3.web.util.CommonResponseFactory;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,5 +34,10 @@ public class BusinessController {
                     HttpStatus.ACCEPTED.getReasonPhrase(), null);
         }
         return commonResponse;
+    }
+
+    @GetMapping("/all")
+    public List<Business> getAll() {
+        return businessService.getAll();
     }
 }

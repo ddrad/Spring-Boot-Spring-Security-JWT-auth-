@@ -33,7 +33,12 @@ public class EmailServiceImpl implements EmailService {
         message.setTo(to);
         message.setSubject(subject);
         message.setText(text);
-        emailSender.send(message);
-        emailRepository.save(CONVERT_TO_EMAIL_ENTITY.apply(message));
+        try {
+            emailSender.send(message);
+        }catch (Exception e) {
+
+        } finally {
+            emailRepository.save(CONVERT_TO_EMAIL_ENTITY.apply(message));
+        }
     }
 }

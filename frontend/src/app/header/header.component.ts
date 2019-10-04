@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthGuard} from "../_guards";
+import {User} from "../_models";
+import {RouterStateSnapshot} from "@angular/router";
+import {TreeNode} from "@angular/router/src/utils/tree";
+import {T} from "@angular/core/src/render3";
 
 @Component({
   selector: 'app-header',
@@ -7,7 +12,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  currentUser: User;
+
+  constructor(private authGuard: AuthGuard) { }
 
   ngOnInit() {
   }

@@ -1,10 +1,9 @@
 ﻿import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {first} from 'rxjs/operators';
 
 import {AlertService, AuthenticationService, UserService} from '../_services/index';
-import {Subscribable, Subscription} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'createCustomer',

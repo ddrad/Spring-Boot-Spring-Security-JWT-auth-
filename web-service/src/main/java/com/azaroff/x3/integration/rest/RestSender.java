@@ -33,7 +33,7 @@ public class RestSender {
         logger.info("Replay was sent to Consumer");
     }
 
-    public boolean checkConfirmationOfUser(long userId) {
+    public boolean checkingConfirmationOfUser(long userId) {
         logger.info("Prepare to call Notification App, userId = " + userId);
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<Long> entity = new HttpEntity<>(userId);

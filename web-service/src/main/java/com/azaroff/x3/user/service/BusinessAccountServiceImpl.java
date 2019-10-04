@@ -45,7 +45,7 @@ public class BusinessAccountServiceImpl implements BusinessAccountService {
     }
 
     private boolean isConfirm(long userId) {
-        return restSender.checkConfirmationOfUser(userId);
+        return restSender.checkingConfirmationOfUser(userId);
     }
 
 }

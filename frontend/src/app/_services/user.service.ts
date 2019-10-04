@@ -3,6 +3,9 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {environment} from '../../environments/environment';
 import {User} from '../_models';
+import {first} from "rxjs/operators";
+import {register} from "ts-node";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class UserService {
@@ -18,7 +21,6 @@ export class UserService {
   }
 
   getByJWT() {
-    console.log('getByEmail');
     return this.http.get(`${environment.apiUrl}/user/`);
   }
 
@@ -31,7 +33,8 @@ export class UserService {
   }
 
   update(user: User) {
-    return this.http.put(`${environment.apiUrl}/users/` + user.id, user);
+    console.log(user);
+    return this.http.put(`${environment.apiUrl}/user`, user);
   }
 
   delete(id: number) {

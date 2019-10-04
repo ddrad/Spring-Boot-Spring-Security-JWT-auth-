@@ -22,13 +22,13 @@ import java.util.concurrent.TimeUnit;
 @Configuration
 public class ActiveMQConfiguration {
     private final Logger logger = LoggerFactory.getLogger(ActiveMQConfiguration.class);
-    @Value("${notify.queue.name}")
+    @Value("${jms.queue.notify.business.accaunt}")
     private String queueName;
-    @Value("${notify.polling.interval.ms}")
+    @Value("${jms.notify.polling.interval.ms}")
     private long queuePollingIntervalMs;
-    @Value("${notify.polling.initial.delay.ms}")
+    @Value("${jms.notify.polling.initial.delay.ms}")
     private long queuePollingInitialDelayMs;
-    @Value("${notify.polling.max.messages.per.pool}")
+    @Value("${jms.notify.polling.max.messages.per.pool}")
     private long maxMessagesPerPoll;
 
     @Bean

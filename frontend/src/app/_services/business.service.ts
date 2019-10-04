@@ -15,8 +15,14 @@ export class BusinessService {
   public updateBbusinessSbj(bus:BusinessItem[]) {
     this.businessChangedSbj.next(bus.slice());
   }
+
   getAll() {
-    return this.http.get<BusinessItem[]>(`${environment.busApiUrl}/vehicles`);
+    return this.http.get<BusinessItem[]>(`${environment.apiUrl}/business/all`);
+  }
+
+  createBusiness(item: BusinessItem, founderId: number) {
+    item.founder = founderId;
+    return this.http.post(`${environment.apiUrl}/business`, item);
   }
 
 }

@@ -24,13 +24,13 @@ import org.springframework.messaging.MessageChannel;
 @Configuration
 public class ActiveMQConfiguration {
     private final Logger logger = LoggerFactory.getLogger(ActiveMQConfiguration.class);
-    @Value("${notification.queue.name}")
+    @Value("${jms.queue.notification.email}")
     private String queueName;
-    @Value("${notification.polling.interval.ms}")
+    @Value("${jms.notification.polling.interval.ms}")
     private long queuePollingIntervalMs;
-    @Value("${notification.polling.initial.delay.ms}")
+    @Value("${jms.notification.polling.initial.delay.ms}")
     private long queuePollingInitialDelayMs;
-    @Value("${notification.polling.max.messages.per.pool}")
+    @Value("${jms.notification.polling.max.messages.per.pool}")
     private long maxMessagesPerPoll;
 
     @Bean
@@ -52,10 +52,11 @@ public class ActiveMQConfiguration {
 
     @Bean
     public IntegrationFlow flowVerify() {
-        return IntegrationFlows.from(Jms.inboundAdapter(connectionFactory()).destination(queue()), c -> c.poller(
-                Pollers.fixedDelay(queuePollingIntervalMs, TimeUnit.MILLISECONDS, queuePollingInitialDelayMs)
+        return IntegrationFlows.from(Jms.inboundAdapter(connectionFactory()).destination(queue()),
+                c -> c.poller(Pollers.fixedDelay(queuePollingIntervalMs, TimeUnit.MILLISECONDS, queuePollingInitialDelayMs)
                         .errorHandler(e -> logger.info("Can't handle incoming message", e))
-                        .maxMessagesPerPoll(maxMessagesPerPoll))).wireTap(h -> h.log().channel("nullChannel"))
+                        .maxMessagesPerPoll(maxMessagesPerPoll)))
+                .wireTap(h -> h.log().channel("nullChannel"))
                 .transform(Transformers.fromJson(ConsumerRequest.class))
                 .channel("notifyChannel").get();
     }
